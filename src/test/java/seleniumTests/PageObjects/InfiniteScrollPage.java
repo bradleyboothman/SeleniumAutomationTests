@@ -5,9 +5,6 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
 // Page Object Modal - http://the-internet.herokuapp.com/infinite_scroll
@@ -41,28 +38,20 @@ public class InfiniteScrollPage extends BasePage {
 	
 	// Scroll to bottom of page
 	public void scrollToBottomOfPage(int times) throws InterruptedException{
-		
-		WebDriverWait wait = new WebDriverWait(driver, 40);
-		wait.until(ExpectedConditions.elementToBeClickable(By.className("jscroll-added"))); 
-		
-		for(int i = 0; i < times; ++i) {			
+		for(int i = 0; i < times; ++i) {
+			Thread.sleep(1000);
 			JSExecutor = (JavascriptExecutor) driver;
 		    JSExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		}
-		
 	}
 	
 	// Scroll to top of page
 	public void scrollToTopOfPage(int times) throws InterruptedException{
-		
-		WebDriverWait wait = new WebDriverWait(driver, 40);
-		wait.until(ExpectedConditions.elementToBeClickable(By.className("jscroll-added"))); 
-		
 		for(int i = 0; i < times; ++i) {
+			Thread.sleep(1000);
 			JSExecutor = (JavascriptExecutor) driver;
 			JSExecutor.executeScript("window.scrollTo(0, 0);");
 		}	
-	
 	}
 	
 	// To access the size of 'jscroll-added' array
